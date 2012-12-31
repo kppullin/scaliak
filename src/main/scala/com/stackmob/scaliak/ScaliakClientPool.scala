@@ -26,7 +26,7 @@ abstract class ScaliakClientPool {
 }
 
 private class ScaliakPbClientFactory(host: String, port: Int) extends PoolableObjectFactory {
-  def makeObject = new PBClientAdapter(host, port) 
+  def makeObject = new PBStreamingClient(host, port)
 
   def destroyObject(sc: Object): Unit = { 
 	  sc.asInstanceOf[RawClientWithStreaming].shutdown
